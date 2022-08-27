@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  web:
+    image: nginx:alpine
+    ports:
+      - 8000:80
+    volumes:
+      - .:/var/www/project:delegated
+      - ./Docker/nginx/site.conf:/etc/nginx/conf.d/default.conf
+
+  php:
+    build: "Docker/php/8.1"
+    container_name: "php-sf6-todo"
+    volumes:
+      - .:/var/www/project:delegated
+
