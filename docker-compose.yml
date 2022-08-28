@@ -13,5 +13,8 @@ services:
     build: "Docker/php/8.1"
     container_name: "php-sf6-todo"
     volumes:
+      - ./Docker/php/8.1/conf.d/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+      - ./Docker/php/8.1/conf.d/error_reporting.ini:/usr/local/etc/php/conf.d/error_reporting.ini
       - .:/var/www/project:delegated
-
+    extra_hosts:
+      - host.docker.internal:host-gateway
