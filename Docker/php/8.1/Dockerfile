@@ -26,3 +26,5 @@ RUN apt-get update && \
     gnupg \
     apt-transport-https \
     symfony-cli
+
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ --filename=composer
