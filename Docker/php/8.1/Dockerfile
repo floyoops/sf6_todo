@@ -9,6 +9,8 @@ RUN apt-get update && \
     libicu-dev && \
     docker-php-ext-install zip intl opcache
 
+WORKDIR /var/www/project
+
 CMD ["php-fpm"]
 
 # Dev image
@@ -19,6 +21,7 @@ RUN pecl install xdebug \
 RUN curl -1sLf 'https://dl.cloudsmith.io/public/symfony/stable/setup.deb.sh' | bash
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
+    git \
     apt-utils \
     gnupg \
     apt-transport-https \
