@@ -4,7 +4,7 @@ services:
   web:
     image: nginx:alpine
     ports:
-      - 8000:80
+      - "8000:80"
     volumes:
       - ./sf_app:/var/www/project:delegated
       - ./Docker/nginx/site.conf:/etc/nginx/conf.d/default.conf:ro
@@ -19,5 +19,10 @@ services:
       - ~/.gitconfig:/etc/gitconfig:ro
       - ./Docker/php/8.1/conf.d/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini:ro
       - ./sf_app:/var/www/project:delegated
+      - composer-cache:/.composer:rw
     extra_hosts:
       - host.docker.internal:host-gateway
+
+volumes:
+  composer-cache:
+    driver: local

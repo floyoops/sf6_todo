@@ -7,7 +7,7 @@ RUN apt-get update && \
     apt-get install -y \
     libzip-dev \
     libicu-dev && \
-    docker-php-ext-install zip intl opcache
+    docker-php-ext-install zip intl opcache pdo pdo_mysql
 
 WORKDIR /var/www/project
 
@@ -21,6 +21,7 @@ RUN pecl install xdebug \
 RUN curl -1sLf 'https://dl.cloudsmith.io/public/symfony/stable/setup.deb.sh' | bash
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
+    p7zip \
     git \
     apt-utils \
     gnupg \
@@ -28,3 +29,4 @@ RUN apt-get update && \
     symfony-cli
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ --filename=composer
+RUN mkdir /.composer && chmod -R 777 /.composer # for cache composer.
