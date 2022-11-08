@@ -23,6 +23,17 @@ services:
     extra_hosts:
       - host.docker.internal:host-gateway
 
+  db:
+    image: mariadb
+    ports:
+      - "3306:3306"
+    environment:
+      MARIADB_ROOT_PASSWORD: toor
+    volumes:
+      - db-data:/var/lib/mysql:rw
+
 volumes:
+  db-data:
+    driver: local
   composer-cache:
     driver: local

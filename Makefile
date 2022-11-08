@@ -16,7 +16,7 @@ endif
 
 .PHONY: build-docker
 build-docker:
-	$(dc) build web php
+	$(dc) build web php db
 
 .PHONY: dev
 dev:
